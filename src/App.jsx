@@ -59,7 +59,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=61f7f94e8821c4e346c3d9ca5e7cde9e`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=61f7f94e8821c4e346c3d9ca5e7cde9e`
       )
       .then((response) => {
         setPositionDivice(response.data);
