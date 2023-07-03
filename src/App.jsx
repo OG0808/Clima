@@ -99,7 +99,7 @@ function App() {
 
   return (
     <div className="main">
-      {loading && <Loading />}
+      {/* {<Loading />} */}
       <div
         className={checked ? "main__container" : "main__containerDark"}
         id="light"
