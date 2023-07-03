@@ -4,12 +4,12 @@ import ClimateCard from "./components/ClimateCard";
 import Switch from "@mui/material/Switch";
 import axios from "axios";
 import "./App.css";
-import { unsupportedProp } from "@mui/material";
+
 import Loading from "./components/Loading";
 
 function App() {
   const [position, setPosition] = useState({});
-  console.log(position.lon);
+
 
   //! loader ----------//
   const [loading, setLoading] = useState(true);
@@ -69,15 +69,15 @@ function App() {
       .then((error) => console.log(error));
 
     //? esta funncion es por si queremos tener la ubicacion por defecto del lugar donde estemos como tal
-    function success(pos) {
-      const obj = {
-        lat: pos.coords.latitude,
-        lon: pos.coords.longitude,
-      };
+    // function success(pos) {
+    //   const obj = {
+    //     lat: pos.coords.latitude,
+    //     lon: pos.coords.longitude,
+    //   };
 
-      setPosition(obj);
-    }
-    navigator.geolocation.getCurrentPosition(success);
+    //   setPosition(obj);
+    // }
+    // navigator.geolocation.getCurrentPosition(success);
   }, [inputValue]);
 
   useEffect(() => {
