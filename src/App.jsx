@@ -11,7 +11,7 @@ function App() {
   
 
   //! loader ----------//
-  const [loading, setLoading] = useState(true);
+  
 
   // const [positionDefoult, setPositionDefoult] = useState('')
 
@@ -50,9 +50,9 @@ function App() {
 
   const iconData = positionStart?.weather[0].icon;
 
-  const [position, setPosition] = useState("");
+  // const [position, setPosition] = useState("");
 
-  
+  const [loading, setLoading] = useState(true);
   
 
   //! Funcion para obtener la ubicacion del dispositivo de donde se este abriendo la app
