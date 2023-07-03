@@ -92,7 +92,7 @@ function App() {
           console.log(error);
         });
     }
-  }, [loading, city]);
+  }, [city, loading]);
 
   //! Funcion que retorna depediendo el clima un icono indicado
   //! tomando como referencia la propieda wather del objeto
