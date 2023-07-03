@@ -8,10 +8,7 @@ import "./App.css";
 import Loading from "./components/Loading";
 
 function App() {
-
-
-  const [position, setPosition] = useState('');
-
+  
 
   //! loader ----------//
   const [loading, setLoading] = useState(true);
@@ -21,22 +18,17 @@ function App() {
   //* manejo y captura de la informacion del input para enviarla a la api y buscar la ciudad selecionada
   const [inputValue, setInputValue] = useState("bogota");
 
-  // const cityDefoult =() => {
-  //   if (inputValue === '') {
-  //      return 'Bogota'
-  //   }
-  // }
-
   const handleInputChange = (event) => {
     setInputValue(event.target.value.trim());
   };
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setCity(inputValue);
   };
-const [city, setCity] = useState("");
+  const [city, setCity] = useState("");
+
+
   //? logica para el Dark mode -----------------------------------------//
   const [checked, setChecked] = React.useState(true);
 
@@ -57,6 +49,11 @@ const [city, setCity] = useState("");
   const [positionStart, setPositionStart] = useState();
 
   const iconData = positionStart?.weather[0].icon;
+
+  const [position, setPosition] = useState("");
+
+  
+  
 
   //! Funcion para obtener la ubicacion del dispositivo de donde se este abriendo la app
   useEffect(() => {
