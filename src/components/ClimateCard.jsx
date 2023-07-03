@@ -25,7 +25,7 @@ import imagen22 from "/Recurso 22.svg";
 import imagen26 from "/Recurso 26.svg";
 
 const ClimateCard = ({ icon, allData, hadleGrades, checkedDark }) => {
-  console.log();
+  console.log(allData);
   //! Condicion para mostrar una
   //!imagen en svg dependiendo del codigo del icono que evnie la api
   //! no encontre una forma mas dinamica para imprtar las imagenes y hacer las condiciones para mostrar las imagenes
@@ -65,7 +65,7 @@ const ClimateCard = ({ icon, allData, hadleGrades, checkedDark }) => {
           <div className={checkedDark ? "card__gadre" : 'card__gadreDark '}>
             <h1>{hadleGrades ? Celcius.toFixed(1) : Fahrenheit.toFixed(1)}{hadleGrades ? '°c' : '°f' }</h1>
             <div className={checkedDark ? "card__temp__description" : "card__temp__descriptionDark"}>
-              <p>VIENTO <span style={{ marginLeft: '120px' }}/>{allData?.wind.deg} m/s</p>
+              <p>VIENTO <span style={{ marginLeft: '120px' }}/>{allData?.wind.speed} m/s</p>
               <br />
               <p>NUBES<span style={{ marginLeft: '130px' }}/>{allData?.clouds.all} %</p>
               <br />

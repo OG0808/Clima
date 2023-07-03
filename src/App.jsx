@@ -9,17 +9,15 @@ import Loading from "./components/Loading";
 
 function App() {
   
-
   //! loader ----------//
   
-
   // const [positionDefoult, setPositionDefoult] = useState('')
 
   //* manejo y captura de la informacion del input para enviarla a la api y buscar la ciudad selecionada
   const [inputValue, setInputValue] = useState("bogota");
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value.trim());
+    setInputValue(event.target.value);
   };
 
   const handleSubmit = (event) => {
