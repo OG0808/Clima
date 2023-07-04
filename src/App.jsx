@@ -8,24 +8,22 @@ import "./App.css";
 import Loading from "./components/Loading";
 
 function App() {
-  
   //! loader ----------//
-  
+
   // const [positionDefoult, setPositionDefoult] = useState('')
 
   //* manejo y captura de la informacion del input para enviarla a la api y buscar la ciudad selecionada
-  const [inputValue, setInputValue] = useState("bogota");
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
+  const [city, setCity] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setCity(inputValue);
   };
-  const [city, setCity] = useState("");
-
 
   //? logica para el Dark mode -----------------------------------------//
   const [checked, setChecked] = React.useState(true);
@@ -51,9 +49,26 @@ function App() {
   // const [position, setPosition] = useState("");
 
   const [loading, setLoading] = useState(true);
-  
 
   //! Funcion para obtener la ubicacion del dispositivo de donde se este abriendo la app
+
+  useEffect(() => {
+    function success(pos) {
+      const obj = {
+        lat: pos.coords.latitude,
+        lon: pos.coords.longitude,
+      };
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${obj.lat}&lon=${obj.lon}&appid=61f7f94e8821c4e346c3d9ca5e7cde9e`
+        )
+        .then((response) => setPositionStart(response.data), setLoading(false))
+
+        .then((error) => console.log(error));
+    }
+    navigator.geolocation.getCurrentPosition(success);
+  }, []);
+
   useEffect(() => {
     axios
       .get(
@@ -61,20 +76,12 @@ function App() {
       )
       .then((response) => {
         setPositionDivice(response.data);
-        setLoading(false);
+
+        // setLoading(false);
       })
       .then((error) => console.log(error));
 
     //? esta funncion es por si queremos tener la ubicacion por defecto del lugar donde estemos como tal
-    // function success(pos) {
-    //   const obj = {
-    //     lat: pos.coords.latitude,
-    //     lon: pos.coords.longitude,
-    //   };
-
-    //   setPosition(obj);
-    // }
-    // navigator.geolocation.getCurrentPosition(success);
   }, [inputValue]);
 
   useEffect(() => {
@@ -90,7 +97,7 @@ function App() {
           console.log(error);
         });
     }
-  }, [city, loading]);
+  }, [city]);
 
   //! Funcion que retorna depediendo el clima un icono indicado
   //! tomando como referencia la propieda wather del objeto
